@@ -1,6 +1,7 @@
 package pl.antygravity.recipeproject.domain;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Recipe {
@@ -19,7 +20,10 @@ public class Recipe {
     //todo add
     //private Difficulty difficulty;
 
-    @Lob //Large object
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
+    private Set<Ingredient> ingredients;
+
+    @Lob
     private Byte[] image;
 
     @OneToOne(cascade = CascadeType.ALL)
@@ -103,5 +107,13 @@ public class Recipe {
 
     public void setNotes(Notes notes) {
         this.notes = notes;
+    }
+
+    public Set<Ingredient> getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(Set<Ingredient> ingredients) {
+        this.ingredients = ingredients;
     }
 }

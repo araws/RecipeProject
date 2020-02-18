@@ -145,19 +145,18 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
         Notes guacamoleNotes = new Notes();
         guacamoleNotes.setRecipeNotes("Be careful handling chilies if using. Wash your hands thoroughly after handling and do not touch your eyes or the area near your eyes with your hands for several hours.");
 
-        guacamoleNotes.setRecipe(guacamoleRecipe);
         guacamoleRecipe.setNotes(guacamoleNotes);
 
-        guacamoleRecipe.getIngredients().add(new Ingredient("ripe avocados", new BigDecimal(2), eachUom, guacamoleRecipe));
-        guacamoleRecipe.getIngredients().add(new Ingredient("salt", new BigDecimal(0.25), teaSpoon, guacamoleRecipe));
-        guacamoleRecipe.getIngredients().add(new Ingredient("fresh lime juice or lemon juice", new BigDecimal(1), tableSpoon, guacamoleRecipe));
-        guacamoleRecipe.getIngredients().add(new Ingredient("minced red onion or thinly sliced green onion", new BigDecimal(2), tableSpoon, guacamoleRecipe));
-        guacamoleRecipe.getIngredients().add(new Ingredient("serrano chilies, stems and seeds removed, minced", new BigDecimal(2), eachUom, guacamoleRecipe));
-        guacamoleRecipe.getIngredients().add(new Ingredient("cilantro (leaves and tender stems), finely chopped", new BigDecimal(2), tableSpoon, guacamoleRecipe));
-        guacamoleRecipe.getIngredients().add(new Ingredient("freshly grated black pepper", new BigDecimal(1), dashUom, guacamoleRecipe));
-        guacamoleRecipe.getIngredients().add(new Ingredient("tomato, seeds and pulp removed, chopped", new BigDecimal(0.5), eachUom, guacamoleRecipe));
-        guacamoleRecipe.getIngredients().add(new Ingredient("Red radishes or jicama, to garnish", new BigDecimal(1), eachUom, guacamoleRecipe));
-        guacamoleRecipe.getIngredients().add(new Ingredient("Tortilla chips, to serve", new BigDecimal(1), eachUom, guacamoleRecipe));
+        guacamoleRecipe.addIngredient(new Ingredient("ripe avocados", new BigDecimal(2), eachUom));
+        guacamoleRecipe.addIngredient(new Ingredient("salt", new BigDecimal(0.25), teaSpoon));
+        guacamoleRecipe.addIngredient(new Ingredient("fresh lime juice or lemon juice", new BigDecimal(1), tableSpoon));
+        guacamoleRecipe.addIngredient(new Ingredient("minced red onion or thinly sliced green onion", new BigDecimal(2), tableSpoon));
+        guacamoleRecipe.addIngredient(new Ingredient("serrano chilies, stems and seeds removed, minced", new BigDecimal(2), eachUom));
+        guacamoleRecipe.addIngredient(new Ingredient("cilantro (leaves and tender stems), finely chopped", new BigDecimal(2), tableSpoon));
+        guacamoleRecipe.addIngredient(new Ingredient("freshly grated black pepper", new BigDecimal(1), dashUom));
+        guacamoleRecipe.addIngredient(new Ingredient("tomato, seeds and pulp removed, chopped", new BigDecimal(0.5), eachUom));
+        guacamoleRecipe.addIngredient(new Ingredient("Red radishes or jicama, to garnish", new BigDecimal(1), eachUom));
+        guacamoleRecipe.addIngredient(new Ingredient("Tortilla chips, to serve", new BigDecimal(1), eachUom));
 
         guacamoleRecipe.getCategories().add(americanCategory);
         guacamoleRecipe.getCategories().add(mexicanCategory);
@@ -189,18 +188,17 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
                 "If you have leftovers you want to serve the next day: Just zap your refrigerated leftovers in the microwave for 30 seconds, and toss before you serve it for round two. That should be enough time to return the oil to a liquid state. If not, keep heating it gently, 15 seconds at a time.\n" +
                 "If you want to take this to a picnic or a potluck: Then make the whole thing a day ahead of time, but wait to add the mozzarella. Keep the salad in the fridge. Zap it in the microwave following the instructions above, then add the torn mozzarella just before leaving for your get together.");
 
-        capresePastaSaladNotes.setRecipe(capresePastaSaladRecipe);
         capresePastaSaladRecipe.setNotes(capresePastaSaladNotes);
 
-        capresePastaSaladRecipe.getIngredients().add(new Ingredient("small shaped pasta, such as orecchiette, farfalle, or campanelle", new BigDecimal(0.5), poundUom, capresePastaSaladRecipe));
-        capresePastaSaladRecipe.getIngredients().add(new Ingredient("Kosher salt", new BigDecimal(1), tableSpoon, capresePastaSaladRecipe));
-        capresePastaSaladRecipe.getIngredients().add(new Ingredient("Kosher salt", new BigDecimal(0.5), teaSpoon, capresePastaSaladRecipe));
-        capresePastaSaladRecipe.getIngredients().add(new Ingredient("olive oil", new BigDecimal(0.33), cupUom, capresePastaSaladRecipe));
-        capresePastaSaladRecipe.getIngredients().add(new Ingredient("garlic cloves, minced", new BigDecimal(4), eachUom, capresePastaSaladRecipe));
-        capresePastaSaladRecipe.getIngredients().add(new Ingredient("freshly ground pepper", new BigDecimal(1), teaSpoon, capresePastaSaladRecipe));
-        capresePastaSaladRecipe.getIngredients().add(new Ingredient("cherry or grape tomatoes, halved", new BigDecimal(1), poundUom, capresePastaSaladRecipe));
-        capresePastaSaladRecipe.getIngredients().add(new Ingredient("mozzarella, torn", new BigDecimal(8), ounceUom, capresePastaSaladRecipe));
-        capresePastaSaladRecipe.getIngredients().add(new Ingredient("large fresh basil leaves, torn", new BigDecimal(10), eachUom, capresePastaSaladRecipe));
+        capresePastaSaladRecipe.addIngredient(new Ingredient("small shaped pasta, such as orecchiette, farfalle, or campanelle", new BigDecimal(0.5), poundUom));
+        capresePastaSaladRecipe.addIngredient(new Ingredient("Kosher salt", new BigDecimal(1), tableSpoon));
+        capresePastaSaladRecipe.addIngredient(new Ingredient("olive oil", new BigDecimal(0.33), cupUom));
+        capresePastaSaladRecipe.addIngredient(new Ingredient("Kosher salt", new BigDecimal(0.5), teaSpoon));
+        capresePastaSaladRecipe.addIngredient(new Ingredient("garlic cloves, minced", new BigDecimal(4), eachUom));
+        capresePastaSaladRecipe.addIngredient(new Ingredient("freshly ground pepper", new BigDecimal(1), teaSpoon));
+        capresePastaSaladRecipe.addIngredient(new Ingredient("cherry or grape tomatoes, halved", new BigDecimal(1), poundUom));
+        capresePastaSaladRecipe.addIngredient(new Ingredient("mozzarella, torn", new BigDecimal(8), ounceUom));
+        capresePastaSaladRecipe.addIngredient(new Ingredient("large fresh basil leaves, torn", new BigDecimal(10), eachUom));
 
         capresePastaSaladRecipe.getCategories().add(italianCategory);
 

@@ -1,5 +1,6 @@
 package pl.antygravity.recipeproject.bootstrap;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
@@ -13,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Slf4j
 @Component
 public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEvent> {
 
@@ -29,6 +31,7 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
         recipeRepository.saveAll(getRecipes());
+        log.debug("Loading Bootstrap Data");
     }
 
     private List<Recipe> getRecipes(){
@@ -38,55 +41,55 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
         //get UOMs
         Optional<UnitOfMeasure> eachUomOptional = unitOfMeasureRepository.findByDescription("Each");
 
-        if (!eachUomOptional.isPresent()){
+        if (eachUomOptional.isEmpty()){
             throw new RuntimeException("Expected UOM Not Find");
         }
 
         Optional<UnitOfMeasure> teaSpoonUomOptional = unitOfMeasureRepository.findByDescription("Teaspoon");
 
-        if (!teaSpoonUomOptional.isPresent()){
+        if (teaSpoonUomOptional.isEmpty()){
             throw new RuntimeException("Expected UOM Not Find");
         }
 
         Optional<UnitOfMeasure> tableSpoonUomOptional = unitOfMeasureRepository.findByDescription("Tablespoon");
 
-        if (!tableSpoonUomOptional.isPresent()){
+        if (tableSpoonUomOptional.isEmpty()){
             throw new RuntimeException("Expected UOM Not Find");
         }
 
         Optional<UnitOfMeasure> cupUomOptional = unitOfMeasureRepository.findByDescription("Cup");
 
-        if (!cupUomOptional.isPresent()){
+        if (cupUomOptional.isEmpty()){
             throw new RuntimeException("Expected UOM Not Find");
         }
 
         Optional<UnitOfMeasure> pinchUomOptional = unitOfMeasureRepository.findByDescription("Pinch");
 
-        if (!pinchUomOptional.isPresent()){
+        if (pinchUomOptional.isEmpty()){
             throw new RuntimeException("Expected UOM Not Find");
         }
 
         Optional<UnitOfMeasure> ounceUomOptional = unitOfMeasureRepository.findByDescription("Ounce");
 
-        if (!ounceUomOptional.isPresent()){
+        if (ounceUomOptional.isEmpty()){
             throw new RuntimeException("Expected UOM Not Find");
         }
 
         Optional<UnitOfMeasure> dashUomOptional = unitOfMeasureRepository.findByDescription("Dash");
 
-        if (!dashUomOptional.isPresent()){
+        if (dashUomOptional.isEmpty()){
             throw new RuntimeException("Expected UOM Not Find");
         }
 
         Optional<UnitOfMeasure> pintUomOptional = unitOfMeasureRepository.findByDescription("Pint");
 
-        if (!pintUomOptional.isPresent()){
+        if (pintUomOptional.isEmpty()){
             throw new RuntimeException("Expected UOM Not Find");
         }
 
         Optional<UnitOfMeasure> poundUomOptional = unitOfMeasureRepository.findByDescription("Pound");
 
-        if (!poundUomOptional.isPresent()){
+        if (poundUomOptional.isEmpty()){
             throw new RuntimeException("Expected UOM Not Find");
         }
 
@@ -104,19 +107,19 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
         //get Categories
         Optional<Category> americanCategoryOptional = categoryRepository.findByDescription("American");
 
-        if (!americanCategoryOptional.isPresent()){
+        if (americanCategoryOptional.isEmpty()){
             throw new RuntimeException("Expected Category Not Found");
         }
 
         Optional<Category> mexicanCategoryOptional = categoryRepository.findByDescription("Mexican");
 
-        if (!mexicanCategoryOptional.isPresent()){
+        if (mexicanCategoryOptional.isEmpty()){
             throw new RuntimeException("Expected Category Not Found");
         }
 
         Optional<Category> italianCategoryOptional = categoryRepository.findByDescription("Italian");
 
-        if (!italianCategoryOptional.isPresent()){
+        if (italianCategoryOptional.isEmpty()){
             throw new RuntimeException("Expected Category Not Found");
         }
 

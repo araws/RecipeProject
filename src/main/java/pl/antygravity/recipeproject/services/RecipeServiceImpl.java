@@ -6,6 +6,7 @@ import pl.antygravity.recipeproject.domain.Recipe;
 import pl.antygravity.recipeproject.repositories.RecipeRepository;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 @Slf4j
@@ -25,5 +26,14 @@ public class RecipeServiceImpl implements RecipeService {
         Set<Recipe> recipeSet = new HashSet<>();
         recipeRepository.findAll().iterator().forEachRemaining(recipeSet::add);
         return recipeSet;
+    }
+
+    public Recipe findById(long l) {
+        Optional<Recipe> recipeOptional = recipeRepository.findById(l);
+
+        if (recipeOptional.isEmpty()){
+            throw new RuntimeException("Recipe Not Found");
+        }
+        return recipeOptional.get();
     }
 }

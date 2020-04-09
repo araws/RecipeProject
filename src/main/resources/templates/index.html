@@ -36,19 +36,24 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Description</th>
+                                <th>View</th>
                             </tr>
                             </thead>
                             <tr th:remove="all">
-                                <td th:text="${recipe.id}">123</td>
-                                <td th:text="${recipe.description}">Guacamole 1</td>
+                                <td>123</td>
+                                <td>Guacamole 1</td>
+                                <td><a href="#">View</a> </td>
                             </tr>
                             <tr th:remove="all">
-                                <td th:text="${recipe.id}">124</td>
-                                <td th:text="${recipe.description}">Guacamole 2</td>
+                                <td>124</td>
+                                <td>Guacamole 2</td>
+                                <td><a href="#">View</a> </td>
                             </tr>
                             <tr th:each="recipe : ${recipes}">
+                                <!--/*@thymesVar id="recipe" type="guru.springframework.domain.Recipe"*/-->
                                 <td th:text="${recipe.id}">125</td>
                                 <td th:text="${recipe.description}">Guacamole 3</td>
+                                <td><a href="#" th:href="@{'/recipe/show/' + ${recipe.id}}">View</a></td>
                             </tr>
                             </table>
                     </div>

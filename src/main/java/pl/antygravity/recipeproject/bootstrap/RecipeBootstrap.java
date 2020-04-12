@@ -151,6 +151,9 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
         guacamoleNotes.setRecipeNotes("Be careful handling chilies if using. Wash your hands thoroughly after handling and do not touch your eyes or the area near your eyes with your hands for several hours.");
 
         guacamoleRecipe.setNotes(guacamoleNotes);
+        guacamoleRecipe.setUrl("https://www.simplyrecipes.com/recipes/perfect_guacamole/");
+        guacamoleRecipe.setServings(4);
+        guacamoleRecipe.setSource("Simply Recipes");
 
         guacamoleRecipe.addIngredient(new Ingredient("ripe avocados", new BigDecimal(2), eachUom));
         guacamoleRecipe.addIngredient(new Ingredient("salt", new BigDecimal(0.25), teaSpoon));
@@ -194,6 +197,9 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
                 "If you want to take this to a picnic or a potluck: Then make the whole thing a day ahead of time, but wait to add the mozzarella. Keep the salad in the fridge. Zap it in the microwave following the instructions above, then add the torn mozzarella just before leaving for your get together.");
 
         capresePastaSaladRecipe.setNotes(capresePastaSaladNotes);
+        capresePastaSaladRecipe.setUrl("https://www.simplyrecipes.com/recipes/caprese_pasta_salad/");
+        capresePastaSaladRecipe.setServings(4);
+        capresePastaSaladRecipe.setSource("Simply Recipes");
 
         capresePastaSaladRecipe.addIngredient(new Ingredient("small shaped pasta, such as orecchiette, farfalle, or campanelle", new BigDecimal(0.5), poundUom));
         capresePastaSaladRecipe.addIngredient(new Ingredient("Kosher salt", new BigDecimal(1), tableSpoon));

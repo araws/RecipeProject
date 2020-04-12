@@ -20,6 +20,7 @@
             th:href="@{/webjars/bootstrap/4.4.1-1/js/bootstrap.min.js}"></script>
 
 </head>
+<!--/*@thymesVar id="recipe" type="pl.antygravity.recipeproject.domain.Recipe"*/-->
 <body>
 
 <div class="container-fluid" style="margin-top: 20px">
@@ -50,7 +51,6 @@
                                 <td><a href="#">View</a> </td>
                             </tr>
                             <tr th:each="recipe : ${recipes}">
-                                <!--/*@thymesVar id="recipe" type="guru.springframework.domain.Recipe"*/-->
                                 <td th:text="${recipe.id}">125</td>
                                 <td th:text="${recipe.description}">Guacamole 3</td>
                                 <td><a href="#" th:href="@{'/recipe/show/' + ${recipe.id}}">View</a></td>

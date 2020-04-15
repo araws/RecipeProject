@@ -4,6 +4,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import pl.antygravity.recipeproject.converters.RecipeCommandToRecipe;
+import pl.antygravity.recipeproject.converters.RecipeToRecipeCommand;
 import pl.antygravity.recipeproject.domain.Recipe;
 import pl.antygravity.recipeproject.repositories.RecipeRepository;
 
@@ -22,11 +24,17 @@ class RecipeServiceImplTest {
     @Mock
     RecipeRepository recipeRepository;
 
+    @Mock
+    RecipeToRecipeCommand recipeToRecipeCommand;
+
+    @Mock
+    RecipeCommandToRecipe recipeCommandToRecipe;
+
     @BeforeEach
     void setUp() {
         MockitoAnnotations.initMocks(this);
 
-        recipeService = new RecipeServiceImpl(recipeRepository);
+        recipeService = new RecipeServiceImpl(recipeRepository, recipeCommandToRecipe, recipeToRecipeCommand);
     }
 
     @Test
@@ -48,10 +56,10 @@ class RecipeServiceImplTest {
     void getRecipes() {
 
         Recipe recipe = new Recipe();
-        HashSet recipeData = new HashSet();
-        recipeData.add(recipe);
+        HashSet recipesData = new HashSet();
+        recipesData.add(recipe);
 
-        when(recipeRepository.findAll()).thenReturn(recipeData);
+        when(recipeRepository.findAll()).thenReturn(recipesData);
 
         Set<Recipe> recipes = recipeService.getRecipes();
 

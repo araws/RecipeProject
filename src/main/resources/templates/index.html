@@ -20,8 +20,9 @@
             th:href="@{/webjars/bootstrap/4.4.1-1/js/bootstrap.min.js}"></script>
 
 </head>
-<!--/*@thymesVar id="recipe" type="pl.antygravity.recipeproject.domain.Recipe"*/-->
 <body>
+<!--/*@thymesVar id="recipes" type="java.util.List"*/-->
+<!--/*@thymesVar id="recipe" type="pl.antygravity.recipeproject.domain.Recipe"*/-->
 
 <div class="container-fluid" style="margin-top: 20px">
     <div class="row justify-content-center">
@@ -38,6 +39,7 @@
                                 <th>ID</th>
                                 <th>Description</th>
                                 <th>View</th>
+                                <th>Update</th>
                             </tr>
                             </thead>
                             <tr th:remove="all">
@@ -53,7 +55,8 @@
                             <tr th:each="recipe : ${recipes}">
                                 <td th:text="${recipe.id}">125</td>
                                 <td th:text="${recipe.description}">Guacamole 3</td>
-                                <td><a href="#" th:href="@{'/recipe/show/' + ${recipe.id}}">View</a></td>
+                                <td><a href="#" th:href="@{'/recipe/' + ${recipe.id} + '/show'}">View</a></td>
+                                <td><a href="#" th:href="@{'/recipe/'+${recipe.id}+'/update'}">Update</a> </td>
                             </tr>
                             </table>
                     </div>

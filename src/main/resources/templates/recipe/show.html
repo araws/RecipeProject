@@ -19,8 +19,8 @@
             crossorigin="anonymous"
             th:href="@{/webjars/bootstrap/4.4.1-1/js/bootstrap.min.js}"></script>
 </head>
-<!--/*@thymesVar id="recipe" type="pl.antygravity.recipeproject.domain.Recipe"*/-->
 <body>
+<!--/*@thymesVar id="recipe" type="pl.antygravity.recipeproject.domain.Recipe"*/-->
 <div class="container-fluid" style="margin-top: 20px">
     <div class="justify-content-center">
         <div class="col-md-6 offset-md-3">
@@ -83,7 +83,7 @@
                             <h5>URL:</h5>
                         </div>
                         <div class="col-md-3">
-                            <p th:text="${recipe.url}">http://www.example.com</p>
+                            <p><a href="#" th:text="${recipe.url}">http://www.example.com</a></p>
                         </div>
                     </div>
                 </div>
@@ -100,7 +100,8 @@
                                 <li th:remove="all">1 Cup of milk</li>
                                 <li th:remove="all">1 Teaspoon of chocolate</li>
                                 <li th:each="ingredient : ${recipe.ingredients}"
-                                    th:text="${(ingredient.getAmount() + ' ' + ingredient.uom.getDescription() +
+                                    th:text="${(ingredient.getAmount() +
+                                    ' ' + ingredient.uom.getDescription() +
                                     ' - ' + ingredient.getDescription())}">1 Teaspoon of Sugar
                                 </li>
                             </ul>

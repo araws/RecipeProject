@@ -39,10 +39,16 @@ public class RecipeServiceImpl implements RecipeService {
     public Recipe findById(long l) {
         Optional<Recipe> recipeOptional = recipeRepository.findById(l);
 
-        if (recipeOptional.isEmpty()){
+        if (recipeOptional.isEmpty()) {
             throw new RuntimeException("Recipe Not Found");
         }
         return recipeOptional.get();
+    }
+
+    @Override
+    @Transactional
+    public RecipeCommand findCommandById(Long l) {
+        return recipeToRecipeCommand.convert(findById(l));
     }
 
     @Override

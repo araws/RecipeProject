@@ -24,86 +24,84 @@
 <!--/*@thymesVar id="recipe" type="pl.antygravity.recipeproject.domain.Recipe"*/-->
 <div class="container-fluid" style="margin-top: 20px">
     <div class="justify-content-center">
-        <div class="col-md-6 col-md-offset-3">
-            <form th:object="${recipe}" th:action="@{/recipe/}" method="post">
-                <input type="hidden" th:field="*{id}"/>
-                <div class="panel-group">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <h1 class="panel-title">Edit Recipe Information</h1>
+        <form th:object="${recipe}" th:action="@{/recipe/}" method="post">
+            <input type="hidden" th:field="*{id}"/>
+            <div class="col-md-6 offset-md-3">
+                <div class="card mb-3">
+                    <div class="card-header bg-primary text-light mb-3">
+                        <h1 class="card-title">Edit Recipe Information</h1>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-3 form-group">
+                                <h5>Recipe Description:</h5>
+                                <input type="text" class="form-control" th:field="*{description}"/>
+                            </div>
                         </div>
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-md-3 form-group">
-                                    <h5>Recipe Description:</h5>
-                                    <input type="text" class="form-control" th:field="*{description}"/>
+                        <div class="row">
+                            <div class="col-md-3 form-group">
+                                <h5>Categories:</h5>
+                            </div>
+                            <div class="col-md-9 form-group">
+                                <div class="radio">
+                                    <h5>
+                                        <input type="checkbox" value=""/>
+                                        Cat 1
+                                    </h5>
+                                </div>
+                                <div class="radio" th:remove="all">
+                                    <h5>
+                                        <input type="checkbox" value=""/>
+                                        Cat 2
+                                    </h5>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-3 form-group">
-                                    <h5>Categories:</h5>
-                                </div>
-                                <div class="col-md-9 form-group">
-                                    <div class="radio">
-                                        <h5>
-                                            <input type="checkbox" value=""/>
-                                            Cat 1
-                                        </h5>
-                                    </div>
-                                    <div class="radio" th:remove="all">
-                                        <h5>
-                                            <input type="checkbox" value=""/>
-                                            Cat 2
-                                        </h5>
-                                    </div>
-                                </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3 form-group">
+                                <h5>Prep Time:</h5>
+                                <input type="text" class="form-control" th:field="*{prepTime}"/>
                             </div>
-                            <div class="row">
-                                <div class="col-md-3 form-group">
-                                    <h5>Prep Time:</h5>
-                                    <input type="text" class="form-control" th:field="*{prepTime}"/>
-                                </div>
-                                <div class="col-md-3 form-group">
-                                    <h5>Cooktime:</h5>
-                                    <input type="text" class="form-control" th:field="*{cookTime}"/>
-                                </div>
-                                <div class="col-md-3 form-group">
-                                    <h5>Difficulty:</h5>
-                                    <select class="form-control">
-                                        <option>Easy</option>
-                                        <option>Medium</option>
-                                        <option>Hard</option>
-                                    </select>
-                                </div>
+                            <div class="col-md-3 form-group">
+                                <h5>Cooktime:</h5>
+                                <input type="text" class="form-control" th:field="*{cookTime}"/>
                             </div>
-                            <div class="row">
-                                <div class="col-md-3 form-group">
-                                    <h5>Servings:</h5>
-                                    <input type="text" class="form-control" th:field="*{servings}"/>
-                                </div>
-                                <div class="col-md-3 form-group">
-                                    <h5>Source:</h5>
-                                    <input type="text" class="form-control" th:field="*{source}"/>
-                                </div>
-                                <div class="col-md-3 form-group">
-                                    <h5>URL:</h5>
-                                    <input type="text" class="form-control" th:field="*{url}"/>
-                                </div>
+                            <div class="col-md-3 form-group">
+                                <h5>Difficulty:</h5>
+                                <select class="form-control">
+                                    <option>Easy</option>
+                                    <option>Medium</option>
+                                    <option>Hard</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3 form-group">
+                                <h5>Servings:</h5>
+                                <input type="text" class="form-control" th:field="*{servings}"/>
+                            </div>
+                            <div class="col-md-3 form-group">
+                                <h5>Source:</h5>
+                                <input type="text" class="form-control" th:field="*{source}"/>
+                            </div>
+                            <div class="col-md-3 form-group">
+                                <h5>URL:</h5>
+                                <input type="text" class="form-control" th:field="*{url}"/>
                             </div>
                         </div>
                     </div>
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
+
+                        <div class="card-header">
                             <div class="row">
                                 <div class="col-md-11 ">
-                                    <h1 class="panel-title">Ingredients</h1>
+                                    <h1 class="card-title">Ingredients</h1>
                                 </div>
                                 <div class="col-md-1">
                                     <a class="btn btn-default" href="#" role="button">View</a>
                                 </div>
                             </div>
                         </div>
-                        <div class="panel-body">
+                        <div class="card-body">
                             <div class="row">
                                 <div class="col-md-12">
                                     <ul th:if="${not #lists.isEmpty(recipe.ingredients)}">
@@ -119,35 +117,34 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <h1 class="panel-title">Directions</h1>
+
+
+                        <div class="card-header">
+                            <h1 class="card-title">Directions</h1>
                         </div>
-                        <div class="panel-body">
+                        <div class="card-body">
                             <div class="row">
                                 <div class="col-md-12 form-group">
                                     <textarea class="form-control" rows="3" th:field="*{directions}"></textarea></div>
                             </div>
                         </div>
-                    </div>
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <h1 class="panel-title">Notes</h1>
+
+                        <div class="card-header">
+                            <h1 class="card-title">Notes</h1>
                         </div>
-                        <div class="panel-body">
+                        <div class="card-body">
                             <div class="row">
                                 <div class="col-md-12 form-group">
                                     <textarea class="form-control" rows="3" th:field="*{notes.recipeNotes}"></textarea>
                                 </div>
                             </div>
                         </div>
-                    </div>
+
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
-            </form>
-        </div>
+        </form>
     </div>
+</div>
 </div>
 </body>
 </html>

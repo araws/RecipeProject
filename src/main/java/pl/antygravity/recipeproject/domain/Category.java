@@ -1,12 +1,14 @@
 package pl.antygravity.recipeproject.domain;
 
-import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Set;
 
-@Data
+@Setter
+@Getter
 @EqualsAndHashCode(exclude = {"recipes"})
 @Entity
 public class Category {
@@ -18,5 +20,4 @@ public class Category {
 
     @ManyToMany(mappedBy = "categories")
     private Set<Recipe> recipes;
-
 }

@@ -1,12 +1,14 @@
 package pl.antygravity.recipeproject.domain;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-@Data
+@Setter
+@Getter
 @Entity
 public class Recipe {
 
@@ -42,11 +44,7 @@ public class Recipe {
             inverseJoinColumns = @JoinColumn(name = "category_id"))
     private Set<Category> categories = new HashSet<>();
 
-    public void setNotes(Notes notes) {
-        if (notes != null) {
-            this.notes = notes;
-            notes.setRecipe(this);
-        }
+    public Recipe() {
     }
 
     public Recipe addIngredient(Ingredient ingredient) {

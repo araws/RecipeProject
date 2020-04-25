@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import pl.antygravity.recipeproject.commands.IngredientCommand;
+import pl.antygravity.recipeproject.commands.RecipeCommand;
+import pl.antygravity.recipeproject.commands.UnitOfMeasureCommand;
 import pl.antygravity.recipeproject.services.IngredientService;
 import pl.antygravity.recipeproject.services.RecipeService;
 import pl.antygravity.recipeproject.services.UnitOfMeasureService;
@@ -44,6 +46,27 @@ public class IngredientController {
                         Long.valueOf(id)));
         return "recipe/ingredient/show";
     }
+
+    @GetMapping("/recipe/{recipeId}/ingredient/new")
+    public String createNewIngredient(@PathVariable String recipeId, Model model){
+
+        //Make sure we have a good id value
+        RecipeCommand recipeCommand = recipeService.findCommandById(Long.valueOf(recipeId));
+        //todo raise exception if null
+
+        //need to return back parent id for hidden form property
+        IngredientCommand ingredientCommand = new IngredientCommand();
+        ingredientCommand.setRecipeId(Long.valueOf(recipeId));
+        model.addAttribute("ingredient", ingredientCommand);
+
+        //init uom
+        ingredientCommand.setUom(new UnitOfMeasureCommand());
+
+        model.addAttribute("uomList", unitOfMeasureService.listAllUoms());
+
+        return "recipe/ingredient/ingredientform";
+    }
+
 
     @GetMapping("recipe/{recipeId}/ingredient/{id}/update")
     public String updateRecipeIngredient(@PathVariable String recipeId, @PathVariable String id,

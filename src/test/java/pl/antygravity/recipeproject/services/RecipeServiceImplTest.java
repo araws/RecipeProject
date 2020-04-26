@@ -75,7 +75,7 @@ class RecipeServiceImplTest {
         Long idToDelete = 2L;
 
         //when
-        recipeService.deletebyId(idToDelete);
+        recipeService.deleteById(idToDelete);
 
         //then
         verify(recipeRepository, times(1)).deleteById(anyLong());

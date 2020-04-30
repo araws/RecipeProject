@@ -27,7 +27,15 @@
 
             <div class="card mb-3">
                 <div class="card-header bg-primary text-light mb-3">
-                    <h1 class="card-title" th:text="${recipe.description}">Recipe Description Here!</h1>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <h1 class="card-title" th:text="${recipe.description}">Recipe Description Here!</h1>
+                        </div>
+                        <div class="col-md-2">
+                            <a class="btn btn-primary" href="#"
+                               th:href="@{'/recipe/' + ${recipe.id} + '/image'}" role="button">Change Image</a>
+                        </div>
+                    </div>
                 </div>
                 <div class="card-body">
                     <div class="row">
@@ -42,6 +50,11 @@
                                     th:text="${category.getDescription()}">cat three
                                 </li>
                             </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <img src="../../static/images/guacamole400x400WithX.jpg"
+                                 th:src="@{/images/guacamole400x400WithX.jpg}"
+                                 width="200" height="200">
                         </div>
                     </div>
                     <div class="row">
@@ -92,11 +105,12 @@
             <div class="card mb-3">
                 <div class="card-header bg-primary text-light mb-3">
                     <div class="row">
-                        <div class="col-md-11 ">
+                        <div class="col-md-10 ">
                             <h1 class="card-title">Ingredients</h1>
                         </div>
-                        <div class="col-md-1">
-                            <a class="btn btn-primary" href="#" th:href="@{'/recipe/' + ${recipe.id} + '/ingredients'}" role="button">View</a>
+                        <div class="col-md-2">
+                            <a class="btn btn-primary" href="#"
+                               th:href="@{'/recipe/' + ${recipe.id} + '/ingredients'}" role="button">View</a>
                         </div>
                     </div>
                 </div>
@@ -124,7 +138,8 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-12">
-                            <p th:text="${recipe.directions}">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget
+                            <p th:text="${recipe.directions}">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+                                Aenean commodo ligula eget
                                 dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes,
                                 nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis,
                                 sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec,
@@ -148,7 +163,8 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-12">
-                            <p th:text="${recipe.notes.recipeNotes}">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget
+                            <p th:text="${recipe.notes.recipeNotes}">Lorem ipsum dolor sit amet, consectetuer adipiscing
+                                elit. Aenean commodo ligula eget
                                 dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes,
                                 nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis,
                                 sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec,

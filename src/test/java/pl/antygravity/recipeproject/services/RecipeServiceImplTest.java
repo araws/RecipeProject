@@ -8,14 +8,14 @@ import pl.antygravity.recipeproject.commands.RecipeCommand;
 import pl.antygravity.recipeproject.converters.RecipeCommandToRecipe;
 import pl.antygravity.recipeproject.converters.RecipeToRecipeCommand;
 import pl.antygravity.recipeproject.domain.Recipe;
+import pl.antygravity.recipeproject.exceptions.NotFoundException;
 import pl.antygravity.recipeproject.repositories.RecipeRepository;
 
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 class RecipeServiceImplTest {
@@ -39,7 +39,7 @@ class RecipeServiceImplTest {
     }
 
     @Test
-    void getRecipeByIdTest(){
+    void getRecipeByIdTest() {
         Recipe recipe = new Recipe();
         recipe.setId(1L);
         Optional<Recipe> recipeOptional = Optional.of(recipe);
@@ -51,6 +51,21 @@ class RecipeServiceImplTest {
         assertNotNull(recipeReturned, "Null recipe returned");
         verify(recipeRepository, times(1)).findById(anyLong());
         verify(recipeRepository, never()).findAll();
+    }
+
+    @Test
+    public void getRecipeByIdTestNotFound() {
+        //given
+        Optional<Recipe> recipeOptional = Optional.empty();
+
+        when(recipeRepository.findById(anyLong())).thenReturn(recipeOptional);
+
+        //when
+        NotFoundException notFoundException = assertThrows(NotFoundException.class, () -> recipeService.findById(1L),
+                "Expected exception to throw an error. But it didn't");
+
+        //then
+        assertTrue(notFoundException.getMessage().contains("Recipe Not Found"));
     }
 
     @Test

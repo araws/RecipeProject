@@ -7,6 +7,7 @@ import pl.antygravity.recipeproject.commands.RecipeCommand;
 import pl.antygravity.recipeproject.converters.RecipeCommandToRecipe;
 import pl.antygravity.recipeproject.converters.RecipeToRecipeCommand;
 import pl.antygravity.recipeproject.domain.Recipe;
+import pl.antygravity.recipeproject.exceptions.NotFoundException;
 import pl.antygravity.recipeproject.repositories.RecipeRepository;
 
 import java.util.HashSet;
@@ -40,7 +41,7 @@ public class RecipeServiceImpl implements RecipeService {
         Optional<Recipe> recipeOptional = recipeRepository.findById(l);
 
         if (recipeOptional.isEmpty()) {
-            throw new RuntimeException("Recipe Not Found");
+            throw new NotFoundException("Recipe Not Found");
         }
         return recipeOptional.get();
     }
